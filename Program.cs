@@ -22,6 +22,8 @@ namespace FamilyGraph
             List<string> repeatedRecords = new List<string>();
             List<string> storeFamilyCount = new List<string>();
 
+
+
             foreach(var person1 in relations)
             {
                 foreach(var person2 in relations)
@@ -43,11 +45,17 @@ namespace FamilyGraph
                     storeFamilyCount.Add(count.ToString());
                 }
                 count = 1;
-            }
+            } 
 
             for(int i = 0; i < storeFamilyCount.Count; i += 2)
             {
-                Console.WriteLine(storeFamilyCount[i] + " : " + storeFamilyCount[i + 1]);
+                foreach(var checkName in people)
+                {
+                    if(storeFamilyCount[i] == checkName.email)
+                    {
+                        Console.WriteLine(checkName.name + " : " + storeFamilyCount[i + 1]);
+                    }
+                }
             }
 
         }
@@ -118,16 +126,6 @@ namespace FamilyGraph
 
             List<people> peopleCsv = csvContext.Read<people>("people.csv", csvFile).ToList();
             List<relations> relationshipsCsv = csvContext.Read<relations>("relationships.csv", csvFile).ToList();
-
-            /**foreach(var pep in peopleCsv)
-            {
-                Console.WriteLine($"{pep.name} | {pep.email} | {pep.age}");
-            }
-
-            foreach (var rel in relationshipsCsv)
-            {
-                Console.WriteLine($"{rel.email} | {rel.relationship} | {rel.emailOfRelative}");
-            }*/
 
             checkRelations(peopleCsv,relationshipsCsv);
             showTotalRelations(peopleCsv, relationshipsCsv);
