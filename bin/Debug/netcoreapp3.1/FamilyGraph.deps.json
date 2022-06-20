@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "FamilyGraph/1.0.0": {
+        "dependencies": {
+          "LINQtoCSV": "1.5.0"
+        },
+        "runtime": {
+          "FamilyGraph.dll": {}
+        }
+      },
+      "LINQtoCSV/1.5.0": {
+        "runtime": {
+          "lib/net35/LINQtoCSV.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FamilyGraph/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LINQtoCSV/1.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R3FWKGV326oWhEIJFgBQvJyeEs7ylViAMjTYs1YetwVdGfbDGf465xfLaxUxePwF/8Tcajt/1Llj3exhYL2xhQ==",
+      "path": "linqtocsv/1.5.0",
+      "hashPath": "linqtocsv.1.5.0.nupkg.sha512"
+    }
+  }
+}

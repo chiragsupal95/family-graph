@@ -1,0 +1,16 @@
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\FamilyGraph.exe
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\FamilyGraph.deps.json
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\FamilyGraph.runtimeconfig.json
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\FamilyGraph.runtimeconfig.dev.json
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\FamilyGraph.dll
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\FamilyGraph.pdb
+D:\IT\Project\Sample\sample\FamilyGraph\bin\Debug\netcoreapp3.1\LINQtoCSV.dll
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.csproj.AssemblyReference.cache
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.GeneratedMSBuildEditorConfig.editorconfig
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.AssemblyInfoInputs.cache
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.AssemblyInfo.cs
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.csproj.CoreCompileInputs.cache
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.csproj.CopyComplete
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.dll
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.pdb
+D:\IT\Project\Sample\sample\FamilyGraph\obj\Debug\netcoreapp3.1\FamilyGraph.genruntimeconfig.cache
