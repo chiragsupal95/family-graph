@@ -12,11 +12,21 @@ namespace FamilyGraph
             readCsvFiles();
             Console.ReadKey();
         }
-        private static void showTotalFamilyMemebrs(List<people> people, List<relations> relations)
+        private static void showTotalFamilyMemebrs(List<people> people, List<StoreFamilyRelations> relations)
         {
             Console.WriteLine();
             Console.WriteLine("-------------------------------- Total Family Members ------------------------------");
             Console.WriteLine();
+
+            List<StoreFamilyRelations> families = new List<StoreFamilyRelations>();
+
+            foreach(var familyMembers in relations)
+            {
+                if(familyMembers.Relation == "FAMILY")
+                {
+                    families.Add(new StoreFamilyRelations(familyMembers.Person, familyMembers.Relative, familyMembers.Relation));
+                }
+            }
 
             int count = 1;
             
@@ -27,31 +37,31 @@ namespace FamilyGraph
             RepeatedMember objToFindEmail;
             RepeatedMember objToFindRelativeEmail;
 
-            foreach (var person1 in relations)
+            foreach (var person1 in families)
             {
-                foreach(var person2 in relations)
+                foreach(var person2 in families)
                 {
-                    objToFindEmail = repeatedRecords.Find(email => (email.Name == person2.email));
-                    objToFindRelativeEmail = repeatedRecords.Find(relativeEmail => (relativeEmail.Name == person2.emailOfRelative));
+                    objToFindEmail = repeatedRecords.Find(email => (email.Name == person2.Person));
+                    objToFindRelativeEmail = repeatedRecords.Find(relativeEmail => (relativeEmail.Name == person2.Relative));
 
-                    if(person1.email == person2.email && !repeatedRecords.Contains(objToFindEmail) && person1.relationship == "FAMILY")
+                    if(person1.Person == person2.Person && !repeatedRecords.Contains(objToFindEmail))
                     {
                         count++;
-                        repeatedRecords.Add(new RepeatedMember(person2.emailOfRelative));
+                        repeatedRecords.Add(new RepeatedMember(person2.Relative));
                     }
-                    else if(person1.email != person2.email && !repeatedRecords.Contains(objToFindEmail) && repeatedRecords.Contains(objToFindRelativeEmail) && person1.relationship == "FAMILY")
+                    else if(person1.Person != person2.Person && !repeatedRecords.Contains(objToFindEmail) && repeatedRecords.Contains(objToFindRelativeEmail))
                     {
                         count++;
-                        repeatedRecords.Add(new RepeatedMember(person2.email));
+                        repeatedRecords.Add(new RepeatedMember(person2.Person));
                     }
                     
                 }
-                objToFindName = storeFamilyCount.Find(name => (name.Name == person1.email));
-                objToFindEmail = repeatedRecords.Find(email => (email.Name == person1.email));
+                objToFindName = storeFamilyCount.Find(name => (name.Name == person1.Person));
+                objToFindEmail = repeatedRecords.Find(email => (email.Name == person1.Person));
 
                 if (!storeFamilyCount.Contains(objToFindName) && !repeatedRecords.Contains(objToFindEmail))
                 {
-                    storeFamilyCount.Add(new CountRelations(person1.email, count));
+                    storeFamilyCount.Add(new CountRelations(person1.Person, count));
                 }
                 count = 1;
             } 
@@ -97,6 +107,8 @@ namespace FamilyGraph
 
         private static void checkRelations(List<people> people, List<relations> relations)
         {
+           List<StoreFamilyRelations> storeFamily = new List<StoreFamilyRelations>();
+            relations objToFindRelation;
            foreach (var person in people)
             {
                 foreach(var relative in relations)
@@ -106,11 +118,24 @@ namespace FamilyGraph
                         if (person.email == relative.email && relative.emailOfRelative == person1.email)
                         {
                             Console.WriteLine(person.name + " and " + person1.name + " are " + relative.relationship);
+                            storeFamily.Add(new StoreFamilyRelations(person.name, person1.name, relative.relationship));
                         }
                     }
                 }
+                objToFindRelation = relations.Find(findRelation => (findRelation.email == person.email));
+                if (!relations.Contains(objToFindRelation))
+                {
+                    storeFamily.Add(new StoreFamilyRelations(person.name, "NULL", "NULL"));
+                }
             }
-            
+
+           foreach(var val in storeFamily)
+            {
+                Console.WriteLine(val.Person + val.Relation + val.Relative);
+            }
+
+            showTotalFamilyMemebrs(people, storeFamily);
+
         }
 
         private static void readCsvFiles()
@@ -131,7 +156,7 @@ namespace FamilyGraph
 
             checkRelations(peopleCsv,relationshipsCsv);
             showTotalRelations(peopleCsv, relationshipsCsv);
-            showTotalFamilyMemebrs(peopleCsv, relationshipsCsv);
+            //showTotalFamilyMemebrs(peopleCsv, relationshipsCsv);
         }
     }
 }
