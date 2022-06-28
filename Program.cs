@@ -22,6 +22,7 @@ namespace FamilyGraph
             
             List<RepeatedMember> repeatedRecords = new List<RepeatedMember>();
             List<CountRelations> storeFamilyCount = new List<CountRelations>();
+
             CountRelations objToFindName;
             RepeatedMember objToFindEmail;
             RepeatedMember objToFindRelativeEmail;
