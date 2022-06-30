@@ -118,22 +118,19 @@ namespace FamilyGraph
                         if (person.email == relative.email && relative.emailOfRelative == person1.email)
                         {
                             Console.WriteLine(person.name + " and " + person1.name + " are " + relative.relationship);
-                            storeFamily.Add(new StoreFamilyRelations(person.name, person1.name, relative.relationship));
+                            storeFamily.Add(new StoreFamilyRelations(person.email, person1.email, relative.relationship));
                         }
                     }
                 }
-                objToFindRelation = relations.Find(findRelation => (findRelation.email == person.email));
+                objToFindRelation = relations.Find(findRelation => (findRelation.email == person.email) || (findRelation.emailOfRelative == person.email));
+                
                 if (!relations.Contains(objToFindRelation))
                 {
-                    storeFamily.Add(new StoreFamilyRelations(person.name, "NULL", "NULL"));
+                    storeFamily.Add(new StoreFamilyRelations(person.email, "NULL", "NULL"));
                 }
             }
 
-           foreach(var val in storeFamily)
-            {
-                Console.WriteLine(val.Person + val.Relation + val.Relative);
-            }
-
+            showTotalRelations(people , relations);
             showTotalFamilyMemebrs(people, storeFamily);
 
         }
@@ -155,8 +152,8 @@ namespace FamilyGraph
             List<relations> relationshipsCsv = csvContext.Read<relations>("relationships.csv", csvFile).ToList();
 
             checkRelations(peopleCsv,relationshipsCsv);
-            showTotalRelations(peopleCsv, relationshipsCsv);
-            //showTotalFamilyMemebrs(peopleCsv, relationshipsCsv);
+            
+            
         }
     }
 }
