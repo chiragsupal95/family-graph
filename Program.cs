@@ -81,7 +81,7 @@ namespace FamilyGraph
         private static void showTotalRelations(List<people> people, List<relations> relations)
         {
             Console.WriteLine();
-            Console.WriteLine("-------------------------------- Total Relations With Each Other ------------------------------");
+            Console.WriteLine("------------------------- Total Relations With Each Other --------------------------");
             Console.WriteLine();
             
             List<CountRelations> storeCount = new List<CountRelations>();
@@ -108,7 +108,7 @@ namespace FamilyGraph
         private static void checkRelations(List<people> people, List<relations> relations)
         {
            List<StoreFamilyRelations> storeFamily = new List<StoreFamilyRelations>();
-           relations objToFindRelation;
+           
            foreach (var person in people)
             {
                 foreach(var relative in relations)
@@ -122,12 +122,6 @@ namespace FamilyGraph
                         }
                     }
                 }
-               objToFindRelation = relations.Find(findRelation => (findRelation.email == person.email) || (findRelation.emailOfRelative == person.email));
-                
-                if (!relations.Contains(objToFindRelation))
-                {
-                    storeFamily.Add(new StoreFamilyRelations(person.email, "NULL", "NULL"));
-                } 
             }
 
             showTotalRelations(people , relations);
